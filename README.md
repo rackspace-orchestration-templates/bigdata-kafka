@@ -69,12 +69,7 @@ Use `heat output-show <OUTPUT NAME>` to get the value for a specific output.
  
  * `cluster_id`:  Cloud big data cluster ID.
  * `cbd_version`: Current cloud big data version used.
- 
-Contributing
-============
-There are substantial changes still happening within the [OpenStack
-Heat](https://wiki.openstack.org/wiki/Heat) project. Template contribution
-guidelines will be drafted in the near future.
+
 
 License
 =======
@@ -91,5 +86,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-
