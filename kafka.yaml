@@ -48,13 +48,13 @@ parameters:
     default: cbd_heat_user
     constraints:
     - allowed_pattern: "^[a-zA-Z][a-zA-Z_]*$"
-      description: Must only contain letters and underscores and must be between 5 to 50 characters..
+      description: Must only contain letters and underscores and must be between 5 to 50 characters.
     - length: { min : 5, max : 50 }
 
   SSHKeyPairName:
     label: SSH Key Pair Name
     description: |
-      SSH public key name used to login to cluster nodes and must be between 5 to 50 characters..
+      SSH public key name used to login to cluster nodes and must be between 5 to 50 characters.
     type: string
     constraints:
       - length: { min : 5,  max : 50 }

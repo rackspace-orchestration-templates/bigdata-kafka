@@ -2,7 +2,7 @@ schema-version: 1.0.0
 application-family: Databases
 application-name: Kafka
 flavor: Multiple Linux Servers
-application-version: Hadoop HDP 2.3
+application-version: Kafka HDP 2.3
 reach-info:
   tattoo: https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/hadoop_tatoo.png
   icon-20x20: https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/bigdata-20x20.jpg
@@ -19,8 +19,8 @@ instructions: |
   to view all the clusters.
 
 description: |
+ **Note**: This template will not deploy to the SYD and HKG data centers.
+
  Multiple Linux servers running an
  [Rackspace Cloud Big Data](http://www.rackspace.com/en-us/cloud/big-data) cluster. All components of the HDP distribution configured in a single cluster setup.
  running following components HDFS 2.7.1, Kafka 0.8.2 and Zookeeper 3.4.6.
-
-
