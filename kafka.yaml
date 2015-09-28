@@ -1,0 +1,116 @@
+heat_template_version: 2015-10-15
+
+description: |
+  #### Kafka Cluster
+
+  ##### NOTE:
+  This template will not deploy to the SYD and HKG data centers.
+  
+  Multiple Linux servers running an
+  [Rackspace Cloud Big Data](http://www.rackspace.com/en-us/cloud/big-data) cluster. All components of the HDP distribution configured in a single cluster setup.
+  running following components HDFS 2.7.1, Kafka 0.8.2 and Zookeeper 3.4.6.
+
+parameter_groups:
+
+ - label: Cluster Details
+   parameters:
+   - clusterName
+
+ - label: Cluster Login
+   parameters:
+   - username
+   - SSHKeyPairName
+   - SSHPubKey
+
+ - label: Cluster Configuration
+   parameters:
+   - flavor
+   - numOfSlaves
+
+
+parameters:
+
+  clusterName:
+    label: Cluster Name
+    description: Specify a name to identify and distinguish the cluster
+    type: string
+    default: cbd_heat_cluster
+    constraints:
+    - allowed_pattern: "^[a-zA-Z][a-zA-Z0-9-_]*$"
+      description: Must begin with a letter and can contain underscores/alphanumeric characters and must be between 5 to 50 characters.
+    - length: { min : 5, max : 50 }
+
+  username:
+    label: Username
+    description: |
+      Cluster user name created to allow SSH access.
+    type: string
+    default: cbd_heat_user
+    constraints:
+    - allowed_pattern: "^[a-zA-Z][a-zA-Z_]*$"
+      description: Must only contain letters and underscores and must be between 5 to 50 characters..
+    - length: { min : 5, max : 50 }
+
+  SSHKeyPairName:
+    label: SSH Key Pair Name
+    description: |
+      SSH public key name used to login to cluster nodes and must be between 5 to 50 characters..
+    type: string
+    constraints:
+      - length: { min : 5,  max : 50 }
+
+  SSHPubKey:
+    label: Public SSH Key
+    description: |
+      SSH public key.
+    type: string
+
+  flavor:
+    label: Flavor
+    type: string
+    default: Small Hadoop Instance
+    description: Cluster slave node resource requirements.
+    constraints:
+      - allowed_values:
+        - Small Hadoop Instance
+        - Medium Hadoop Instance
+        - Large Hadoop Instance
+        - XLarge Hadoop Instance
+        description: Must be a valid flavor type.
+
+
+  numOfSlaves:
+    label: Number of slave nodes
+    description: |
+      Number of data nodes within cluster to be created.
+    type: number
+    default: 3
+    constraints:
+      - range:
+          min: 1
+          max: 8
+        description: Must be between 1 and 8 nodes.
+
+resources:
+
+  cbd_cluster:
+    type: "Rackspace::Cloud::BigData"
+    properties:
+      stackId:       KAFKA_HDP2_3
+      clusterName:   { get_param: clusterName }
+      clusterLogin:  { get_param: username }
+      flavor:        { get_param: flavor }
+      numSlaveNodes: { get_param: numOfSlaves }
+      publicKeyName: { get_param: SSHKeyPairName }
+      publicKey:     { get_param: SSHPubKey }
+
+
+outputs:
+  cluster_id:
+    value: { get_resource: cbd_cluster }
+    description: Cloud Big Data Cluster ID
+
+  cbd_version:
+    value: { get_attr: [cbd_cluster, cbdVersion] }
+    description: Cloud Big Data version
+
