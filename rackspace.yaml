@@ -1,0 +1,26 @@
+schema-version: 1.0.0
+application-family: Databases
+application-name: Kafka
+flavor: Multiple Linux Servers
+application-version: Hadoop HDP 2.3
+reach-info:
+  tattoo: https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/hadoop_tatoo.png
+  icon-20x20: https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/bigdata-20x20.jpg
+abstract: |
+  The Rackspace Cloud Big Data Platform provides a scalable, robust, and complete Hadoop cluster with HDP 2.3 stack.
+instructions: |
+  #### Getting Started
+  If you're new to Rackspace Cloud Big Data, the [resource](http://docs.rackspace.com/cbd/api/v1.0/cbd-getting-started-2/content/CBD_Overview.html)
+  helps users to know more about it. This [Kafka](http://kafka.apache.org/documentation.html) documentation helps you to understand more in details.
+
+  #### Logging in via SSH
+  To access your cluster ( A group of servers/nodes), SSH into the gateway node with your `publicKey` parameter used in configuration.
+  You might want to visit [Cloud Control Panel](https://mycloud.rackspace.com/) and in the menu bar at the top of the window, click Databases > Big Data
+  to view all the clusters.
+
+description: |
+ Multiple Linux servers running an
+ [Rackspace Cloud Big Data](http://www.rackspace.com/en-us/cloud/big-data) cluster. All components of the HDP distribution configured in a single cluster setup.
+ running following components HDFS 2.7.1, Kafka 0.8.2 and Zookeeper 3.4.6.
+
+
